@@ -3,4 +3,5 @@ Thumbs.db
 .vscode/
 .idea/
 *.log
+*.zip
 node_modules/
