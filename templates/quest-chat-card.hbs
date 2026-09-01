@@ -1,0 +1,74 @@
+<div class="simple-quest-board chat-card quest-card" data-id="{{id}}">
+    {{#if bannerTitle}}
+    <div class="quest-chat-banner">
+        <i class="fas fa-scroll"></i>
+        <span>{{bannerTitle}}</span>
+    </div>
+    {{/if}}
+
+    <header class="card-header">
+        <h3 class="quest-card-title">{{title}}</h3>
+    </header>
+
+    <div class="card-content">
+        {{#if img}}
+        <div class="quest-image-container">
+            <img src="{{img}}" alt="{{title}}" class="quest-img" />
+        </div>
+        {{/if}}
+
+        {{#if contratants.length}}
+        <div class="quest-givers-player quest-chat-givers">
+            <span class="chat-section-label"><i class="fas fa-user-shield"></i> Contratante(s)</span>
+            <div class="givers-list-player">
+                {{#each contratants}}
+                <span class="reward-tag giver-tag">
+                    {{#if this.img}}<img src="{{this.img}}" class="reward-icon-img" />{{else}}<i class="fas fa-user-circle"></i>{{/if}}
+                    {{this.name}}
+                </span>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        <div class="quest-description">
+            {{{enrichedDescription}}}
+        </div>
+
+        {{#if tasks.length}}
+        <div class="quest-tasks-chat">
+            <span class="chat-section-label"><i class="fas fa-tasks"></i> Objetivos</span>
+            <ul class="tasks-player-list">
+                {{#each tasks}}
+                <li class="{{#if this.completed}}task-completed{{/if}}">
+                    <i class="{{#if this.completed}}fas fa-check-square{{else}}far fa-square{{/if}}"></i>
+                    <span>{{this.text}}</span>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+
+        <div class="quest-details flexcol">
+            {{#if rewards.length}}
+            <div class="quest-detail-item">
+                <span class="chat-section-label"><i class="fas fa-coins"></i> Recompensas</span>
+                <div class="rewards-list-player">
+                    {{#each rewards}}
+                    <span class="reward-tag reward-type-{{this.type}}">
+                        {{#if this.img}}<img src="{{this.img}}" class="reward-icon-img" />{{else}}<i class="{{this.icon}}"></i>{{/if}}
+                        {{this.text}}
+                    </span>
+                    {{/each}}
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if acceptedBy}}
+            <div class="quest-detail-item quest-accepted-by">
+                <i class="fas fa-user-check"></i> <strong>Aceita por:</strong> {{acceptedBy}}
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,546 @@
+/* ==========================================================================
+   1. CONTAINER E BUSCA / FILTROS (COMBOBOX)
+   ========================================================================== */
+.quest-board-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background: #1a1614;
+    color: #2b2013;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.header-controls-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-add {
+    background: #8b6d43;
+    color: #ffffff;
+    border: 1px solid #f0e6d2;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 28px;
+}
+
+    .btn-add:hover {
+        background: #a38253;
+    }
+
+.search-box {
+    position: relative;
+    flex: 2;
+    min-width: 120px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8b6d43;
+    font-size: 0.8em;
+}
+
+.search-input {
+    width: 100%;
+    height: 28px;
+    padding: 2px 8px 2px 24px;
+    background: #2b2013;
+    border: 1px solid #8b6d43;
+    border-radius: 4px;
+    color: #f0e6d2;
+    font-size: 0.8em;
+    box-sizing: border-box;
+}
+
+.filter-select {
+    flex: 1;
+    min-width: 110px;
+    height: 28px;
+    background: #2b2013;
+    border: 1px solid #8b6d43;
+    border-radius: 4px;
+    color: #f0e6d2;
+    padding: 2px 4px;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+    .filter-select:focus,
+    .search-input:focus {
+        outline: none;
+        border-color: #f0e6d2;
+    }
+
+/* TAGS DE CONTRATANTES */
+.quest-header-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.quest-title-input {
+    flex: 1; /* Faz o título ocupar todo o espaço restante do topo */
+}
+
+.giver-dropzone {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    border: 1px dashed rgba(139, 109, 67, 0.4);
+    background: rgba(0, 0, 0, 0.05);
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.giver-tag {
+    background: rgba(139, 109, 67, 0.2);
+    border: 1px solid #8b6d43;
+}
+
+    .giver-tag img {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+/* ==========================================================================
+   2. CARDS E CABEÇALHO DA APLICAÇÃO
+   ========================================================================== */
+.quest-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    max-height: 520px;
+}
+
+.quest-card {
+    background: rgba(255, 248, 230, 0.9);
+    border: 1px solid #8b6d43;
+    border-left: 6px solid #8b6d43;
+    border-radius: 4px;
+    padding: 8px 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+    .quest-card.category-main {
+        border-left-color: #eab308;
+    }
+
+    .quest-card.category-side {
+        border-left-color: #94a3b8;
+    }
+
+    .quest-card.category-character {
+        border-left-color: #8b5cf6;
+    }
+
+.quest-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.drag-handle {
+    cursor: grab;
+    color: #8b6d43;
+    padding: 0 2px;
+}
+
+.quest-header-inputs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-grow: 1;
+}
+
+    .quest-header-inputs input.title-input {
+        flex: 2;
+        min-width: 130px;
+        height: 26px;
+        font-weight: bold;
+    }
+
+    .quest-header-inputs select.category-select,
+    .quest-header-inputs select.status-select {
+        flex: 1;
+        min-width: 95px;
+        height: 26px;
+        padding: 2px 4px;
+    }
+
+.quest-header-actions {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.btn-share,
+.btn-delete {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid #8b6d43;
+    color: #2b2013;
+    padding: 3px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+    .btn-delete:hover {
+        background: #a82e2e;
+        color: #fff;
+    }
+
+/* ==========================================================================
+   3. CABEÇALHO DO CARD (VISÃO DO JOGADOR)
+   ========================================================================== */
+.quest-header-player {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(139, 109, 67, 0.3);
+}
+
+.quest-title-player {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+    flex-grow: 1;
+    line-height: 1.2;
+}
+
+.quest-player-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.category-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.72em;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: #2b2013;
+}
+
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.72em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+    .status-tag.status-active {
+        background: #2563eb;
+    }
+
+    .status-tag.status-completed {
+        background: #16a34a;
+    }
+
+    .status-tag.status-failed {
+        background: #dc2626;
+    }
+
+/* ==========================================================================
+   4. CORPO DO CARD E MÍDIA (GM & JOGADOR)
+   ========================================================================== */
+.quest-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.image-picker-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.quest-preview-img {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 1px solid #8b6d43;
+    background: #111;
+    cursor: pointer;
+}
+
+.img-input {
+    flex-grow: 1;
+    height: 26px;
+}
+
+.desc-input {
+    width: 100%;
+    min-height: 50px;
+    resize: vertical;
+    border: 1px solid #b59a72;
+    border-radius: 3px;
+    padding: 4px;
+    font-family: inherit;
+    font-size: 0.85em;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   5. BARRA DE PROGRESSO E CHECKLIST
+   ========================================================================== */
+.quest-progress-container {
+    position: relative;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    height: 16px;
+    margin: 6px 0 2px 0;
+    overflow: hidden;
+    border: 1px solid #b59a72;
+}
+
+.progress-bar-fill {
+    background: #2563eb;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.7em;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px #000;
+    line-height: 16px;
+}
+
+.tasks-section,
+.tasks-player-section {
+    background: rgba(0, 0, 0, 0.03);
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px dashed #b59a72;
+}
+
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8em;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.task-input {
+    flex-grow: 1;
+    background: #000;
+    border: 1px solid #b59a72;
+    border-radius: 3px;
+    font-size: 0.8em;
+    padding: 2px 4px;
+}
+
+.tasks-player-list {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+    .tasks-player-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+        font-size: 0.82rem;
+        line-height: 1.3;
+    }
+
+        .tasks-player-list li i {
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .task-completed,
+        .tasks-player-list li.task-completed {
+            text-decoration: line-through;
+            opacity: 0.65;
+        }
+
+/* ==========================================================================
+   6. DROPZONE E TAGS DE RECOMPENSAS
+   ========================================================================== */
+.reward-dropzone {
+    border: 2px dashed #8b6d43;
+    padding: 6px;
+    border-radius: 4px;
+    background: rgba(139, 109, 67, 0.05);
+}
+
+.rewards-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8em;
+    margin-bottom: 4px;
+}
+
+.rewards-list-gm,
+.rewards-list-player {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+}
+
+.reward-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.08);
+    border: 1px solid #8b6d43;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.75em;
+    font-weight: 600;
+}
+
+.reward-icon-img {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.no-rewards {
+    font-size: 0.75em;
+    font-style: italic;
+    color: #666;
+}
+
+.btn-distribute-rewards {
+    background: #1e3a8a;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 4px 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 6px;
+    width: 100%;
+}
+
+    .btn-distribute-rewards:hover {
+        background: #2563eb;
+    }
+
+/* ==========================================================================
+   7. BOTÕES AUXILIARES
+   ========================================================================== */
+.btn-mini-add,
+.btn-remove-mini,
+.btn-add-reward {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8em;
+    color: #4a341e;
+    padding: 0 4px;
+}
+
+.btn-remove-mini {
+    color: #a82e2e;
+}
+
+    .btn-remove-mini:hover {
+        color: #dc2626;
+    }
+
+/* ==========================================================================
+   8. CHAT CARDS
+   ========================================================================== */
+.simple-quest-board.chat-card {
+    padding: 8px;
+    border: 1px solid var(--color-border-dark, #7a7971);
+    border-radius: 5px;
+    background: var(--color-fieldset-bg, rgba(0, 0, 0, 0.05));
+}
+
+.quest-chat-banner {
+    background: linear-gradient(90deg, #4a2e16 0%, #2c1a0c 100%);
+    color: #f0e6d2;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.quest-card-title {
+    margin: 4px 0 8px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 1.25;
+    color: #2c1a0c;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding-bottom: 4px;
+}
+
+.chat-section-label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    color: #4a2e16;
+}
+
+.quest-accepted-by {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: #333;
+}

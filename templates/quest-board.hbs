@@ -1,0 +1,244 @@
+<div class="quest-board-container">
+    <div class="quest-board-header">
+        <div class="header-controls-row">
+            {{#if isGM}}
+            <button type="button" class="btn-add" data-action="addQuest" title="Criar Nova Missão">
+                <i class="fas fa-plus"></i> <span>Nova Missão</span>
+            </button>
+            {{/if}}
+
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Buscar missão..." value="{{searchQuery}}" />
+            </div>
+
+            <!-- Comboboxes / Selects de Filtro -->
+            <select class="filter-select status-filter-select">
+                <option value="all" {{#if (eq currentStatusFilter 'all')}} selected{{/if}}>Todos os Status</option>
+                <option value="available" {{#if (eq currentStatusFilter 'available')}} selected{{/if}}>Disponíveis</option>
+                <option value="in_progress" {{#if (eq currentStatusFilter 'in_progress')}} selected{{/if}}>Em Andamento</option>
+                <option value="completed" {{#if (eq currentStatusFilter 'completed')}} selected{{/if}}>Concluídas</option>
+            </select>
+
+            <select class="filter-select category-filter-select">
+                <option value="all" {{#if (eq currentCategoryFilter 'all')}} selected{{/if}}>Todos os Tipos</option>
+                <option value="main" {{#if (eq currentCategoryFilter 'main')}} selected{{/if}}>Principais</option>
+                <option value="side" {{#if (eq currentCategoryFilter 'side')}} selected{{/if}}>Sub Quests</option>
+                <option value="character" {{#if (eq currentCategoryFilter 'character')}} selected{{/if}}>Personagem</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="quest-list">
+        {{#each quests}}
+        <div class="quest-card category-{{this.category}} status-{{this.status}}" data-id="{{this.id}}" draggable="{{#if ../isGM}}true{{else}}false{{/if}}">
+            <div class="quest-header">
+                {{#if ../isGM}}
+                <div class="drag-handle" title="Arraste para reordenar">
+                    <i class="fas fa-grip-vertical"></i>
+                </div>
+
+                <div class="quest-header-inputs">
+                    <input type="text" class="quest-input title-input" data-field="title" value="{{this.title}}" placeholder="Título da Missão..." />
+
+                    <select class="quest-select category-select" data-field="category">
+                        <option value="main" {{#if (eq this.category 'main')}} selected{{/if}}>Quest Principal</option>
+                        <option value="side" {{#if (eq this.category 'side')}} selected{{/if}}>Sub Quest</option>
+                        <option value="character" {{#if (eq this.category 'character')}} selected{{/if}}>Quest de Personagem</option>
+                    </select>
+
+                    <select class="quest-select status-select" data-id="{{this.id}}">
+                        <option value="available" {{#if this.isAvailable}} selected{{/if}}>Disponível</option>
+                        <option value="in_progress" {{#if this.isInProgress}} selected{{/if}}>Em Andamento</option>
+                        <option value="completed" {{#if this.isCompleted}} selected{{/if}}>Concluída</option>
+                    </select>
+                </div>
+
+                <div class="quest-header-actions">
+                    <button type="button" class="btn-share" data-action="shareQuest" data-id="{{this.id}}" title="Compartilhar no Chat">
+                        <i class="fas fa-share-nodes"></i>
+                    </button>
+                    <button type="button" class="btn-delete" data-action="deleteQuest" data-id="{{this.id}}" title="Excluir">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                {{else}}
+                <div class="quest-header-player">
+                    <h3 class="quest-title-player">{{this.title}}</h3>
+                    <div class="quest-player-meta">
+                        <span class="category-tag category-{{this.category}}">
+                            <i class="{{this.categoryIcon}}"></i> {{this.categoryLabel}}
+                        </span>
+                        <span class="status-tag status-{{this.status}}">
+                            {{#if this.isAvailable}}Disponível{{/if}}
+                            {{#if this.isInProgress}}Em Andamento{{/if}}
+                            {{#if this.isCompleted}}Concluída{{/if}}
+                        </span>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+
+            <!-- Barra de Progresso de Objetivos -->
+            {{#if this.tasks.length}}
+            <div class="quest-progress-container">
+                <div class="progress-bar-fill" style="width: {{this.progressPercent}}%;"></div>
+                <span class="progress-text">{{this.completedTasksCount}}/{{this.tasks.length}} Objetivos ({{this.progressPercent}}%)</span>
+            </div>
+            {{/if}}
+
+            <div class="quest-body">
+                {{#if ../isGM}}
+                <div class="image-picker-row">
+                    <img src="{{#if this.img}}{{this.img}}{{else}}icons/svg/book.svg{{/if}}" class="quest-preview-img" data-action="pickImage" data-id="{{this.id}}" title="Escolher Imagem" />
+                    <input type="text" class="quest-input img-input" data-field="img" value="{{this.img}}" placeholder="Caminho da imagem..." />
+                    <button type="button" class="btn-picker" data-action="pickImage" data-id="{{this.id}}" title="Selecionar Imagem">
+                        <i class="fas fa-file-image"></i>
+                    </button>
+                </div>
+
+                <!-- Contratantes com Dropzone (GM) - Acima da Descrição -->
+                <div class="quest-givers-section reward-dropzone giver-dropzone" data-quest-id="{{this.id}}" data-drop-type="giver">
+                    <div class="rewards-header">
+                        <strong><i class="fas fa-user-shield"></i> Contratante(s):</strong>
+                        <button type="button" class="btn-mini-add" data-action="addContratant" data-id="{{this.id}}" title="Adicionar Contratante">
+                            <i class="fas fa-plus"></i> Contratante
+                        </button>
+                    </div>
+
+                    <div class="rewards-list-gm">
+                        {{#each this.contratants}}
+                        <span class="reward-tag giver-tag" data-actor-id="{{this.id}}">
+                            {{#if this.img}}
+                            <img src="{{this.img}}" class="reward-icon-img" alt="{{this.name}}" />
+                            {{else}}
+                            <i class="fas fa-user-circle"></i>
+                            {{/if}}
+                            {{this.name}}
+                            <a data-action="removeContratant" data-quest-id="{{../id}}" data-index="{{@index}}" title="Remover"><i class="fas fa-times"></i></a>
+                        </span>
+                        {{else}}
+                        <span class="no-rewards">Arraste um Ator para cá ou clique em + Contratante.</span>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <!-- Descrição / Detalhes da Missão -->
+                <textarea class="quest-input desc-input" data-field="description" placeholder="Detalhes da missão...">{{this.description}}</textarea>
+
+                <!-- Checklist de Objetivos (GM) -->
+                <div class="tasks-section">
+                    <div class="section-title-row">
+                        <strong>Objetivos / Etapas:</strong>
+                        <button type="button" class="btn-mini-add" data-action="addTask" data-id="{{this.id}}">
+                            <i class="fas fa-plus"></i> Objetivo
+                        </button>
+                    </div>
+                    <div class="tasks-list">
+                        {{#each this.tasks}}
+                        <div class="task-item">
+                            <input type="checkbox" class="task-checkbox" data-quest-id="{{../id}}" data-index="{{@index}}" {{#if this.completed}} checked{{/if}} />
+                            <input type="text" class="task-input" data-quest-id="{{../id}}" data-index="{{@index}}" value="{{this.text}}" placeholder="Descrição do objetivo..." />
+                            <a data-action="removeTask" data-quest-id="{{../id}}" data-index="{{@index}}" class="btn-remove-mini"><i class="fas fa-times"></i></a>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <!-- Recompensas com Dropzone (GM) -->
+                <div class="rewards-section-gm reward-dropzone" data-quest-id="{{this.id}}" data-drop-type="reward">
+                    <div class="rewards-header">
+                        <strong>Recompensas (Arraste Itens aqui ou Clique em +):</strong>
+                        <button type="button" class="btn-add-reward" data-action="addReward" data-id="{{this.id}}">
+                            <i class="fas fa-plus"></i> Texto
+                        </button>
+                    </div>
+
+                    <div class="rewards-list-gm">
+                        {{#each this.rewards}}
+                        <span class="reward-tag reward-type-{{this.type}}">
+                            {{#if this.img}}<img src="{{this.img}}" class="reward-icon-img" />{{else}}<i class="{{this.icon}}"></i>{{/if}}
+                            {{this.text}}
+                            <a data-action="removeReward" data-quest-id="{{../id}}" data-index="{{@index}}" title="Remover"><i class="fas fa-times"></i></a>
+                        </span>
+                        {{else}}
+                        <span class="no-rewards">Arraste itens do Compêndio/Atores ou adicione manualmente.</span>
+                        {{/each}}
+                    </div>
+                </div>
+
+                {{else}}
+
+                <!-- Visualização do Jogador -->
+                {{#if this.img}}
+                <div class="quest-image-container">
+                    <img src="{{this.img}}" alt="{{this.title}}" class="quest-img" />
+                </div>
+                {{/if}}
+
+                {{#if this.contratants.length}}
+                <div class="quest-givers-player">
+                    <strong><i class="fas fa-user-shield"></i> Contratante(s):</strong>
+                    <div class="givers-list-player">
+                        {{#each this.contratants}}
+                        <span class="reward-tag giver-tag">
+                            {{#if this.img}}<img src="{{this.img}}" class="reward-icon-img" />{{else}}<i class="fas fa-user-circle"></i>{{/if}}
+                            {{this.name}}
+                        </span>
+                        {{/each}}
+                    </div>
+                </div>
+                {{/if}}
+
+                <div class="quest-description">{{{this.enrichedDescription}}}</div>
+
+                {{#if this.tasks.length}}
+                <div class="tasks-player-section">
+                    <strong>Objetivos:</strong>
+                    <ul class="tasks-player-list">
+                        {{#each this.tasks}}
+                        <li class="{{#if this.completed}}task-completed{{/if}}">
+                            <i class="{{#if this.completed}}fas fa-check-square{{else}}far fa-square{{/if}}"></i> {{this.text}}
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{/if}}
+
+                {{#if this.rewards.length}}
+                <div class="quest-rewards-player">
+                    <strong>Recompensas:</strong>
+                    <div class="rewards-list-player">
+                        {{#each this.rewards}}
+                        <span class="reward-tag reward-type-{{this.type}}">
+                            {{#if this.img}}<img src="{{this.img}}" class="reward-icon-img" />{{else}}<i class="{{this.icon}}"></i>{{/if}}
+                            {{this.text}}
+                        </span>
+                        {{/each}}
+                    </div>
+                </div>
+                {{/if}}
+
+                {{#if this.acceptedBy}}
+                <div class="quest-assignee">
+                    <i class="fas fa-user-check"></i> <strong>Aceita por:</strong> {{this.acceptedBy}}
+                </div>
+                {{/if}}
+
+                {{#if this.isAvailable}}
+                <div class="quest-actions-player">
+                    <button type="button" class="btn-accept" data-action="acceptQuest" data-id="{{this.id}}">
+                        <i class="fas fa-scroll"></i> Aceitar Missão
+                    </button>
+                </div>
+                {{/if}}
+                {{/if}}
+            </div>
+        </div>
+        {{else}}
+        <div class="empty-board">
+            <p>Nenhuma missão encontrada.</p>
+        </div>
+        {{/each}}
+    </div>
+</div>

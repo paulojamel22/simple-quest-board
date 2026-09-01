@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\scripts\\quest-board.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\quest-board.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\templates\\quest-board.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\quest-board.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\templates\\quest-chat-card.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\quest-chat-card.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\styles\\quest-board.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:styles\\quest-board.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\module.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:module.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "module.json",
+              "DocumentMoniker": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\module.json",
+              "RelativeDocumentMoniker": "module.json",
+              "ToolTip": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\module.json",
+              "RelativeToolTip": "module.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-23T00:31:54.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "quest-chat-card.hbs",
+              "DocumentMoniker": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\templates\\quest-chat-card.hbs",
+              "RelativeDocumentMoniker": "templates\\quest-chat-card.hbs",
+              "ToolTip": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\templates\\quest-chat-card.hbs",
+              "RelativeToolTip": "templates\\quest-chat-card.hbs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAuwEkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-08-22T23:15:09.494Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "quest-board.hbs",
+              "DocumentMoniker": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\templates\\quest-board.hbs",
+              "RelativeDocumentMoniker": "templates\\quest-board.hbs",
+              "ToolTip": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\templates\\quest-board.hbs",
+              "RelativeToolTip": "templates\\quest-board.hbs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAuwKYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-08-22T19:20:39.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "quest-board.css",
+              "DocumentMoniker": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\styles\\quest-board.css",
+              "RelativeDocumentMoniker": "styles\\quest-board.css",
+              "ToolTip": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\styles\\quest-board.css",
+              "RelativeToolTip": "styles\\quest-board.css",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAuwGoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-08-22T19:21:24.26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "quest-board.js",
+              "DocumentMoniker": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\scripts\\quest-board.js",
+              "RelativeDocumentMoniker": "scripts\\quest-board.js",
+              "ToolTip": "C:\\Users\\paulo\\AppData\\Local\\FoundryVTT\\Data\\modules\\simple-quest-board\\scripts\\quest-board.js",
+              "RelativeToolTip": "scripts\\quest-board.js",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAUwEAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-08-22T19:19:58.294Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
