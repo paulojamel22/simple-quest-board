@@ -2,10 +2,10 @@
   "id": "simple-quest-board",
   "title": "Simple Quest Board",
   "description": "Um quadro de missões simples e editável para o Mestre e visível para jogadores.",
-  "version": "0.0.1 - Beta",
+  "version": "1.0.0-beta.1",
   "url": "https://github.com/paulojamel22/simple-quest-board",
   "manifest": "https://github.com/paulojamel22/simple-quest-board/releases/latest/download/module.json",
-  "download": "https://github.com/paulojamel22/simple-quest-board/releases/download/0.0.1B/module.zip",
+  "download": "https://github.com/paulojamel22/simple-quest-board/releases/download/v1.0.0-beta.1/module.zip",
   "compatibility": {
     "minimum": "14",
     "verified": "14"
